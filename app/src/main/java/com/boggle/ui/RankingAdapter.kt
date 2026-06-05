@@ -1,4 +1,4 @@
-package com.boggle
+package com.boggle.ui
 
 import android.graphics.Color
 import android.view.Gravity
@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.boggle.R
+import com.boggle.data.GameResult
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

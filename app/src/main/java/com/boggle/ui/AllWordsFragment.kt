@@ -1,4 +1,4 @@
-package com.boggle
+package com.boggle.ui
 
 import android.os.Bundle
 import android.view.Gravity
@@ -11,6 +11,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.boggle.R
+import com.boggle.viewmodel.GameViewModel
 import kotlin.getValue
 
 class AllWordsFragment : Fragment(R.layout.fragment_all_words) {

@@ -1,4 +1,4 @@
-package com.boggle
+package com.boggle.ui
 
 import android.os.Bundle
 import android.view.View
@@ -11,6 +11,8 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import androidx.fragment.app.activityViewModels
+import com.boggle.R
+import com.boggle.viewmodel.GameViewModel
 import com.google.android.material.button.MaterialButtonToggleGroup
 
 class ResultsFragment : Fragment(R.layout.fragment_results) {

@@ -1,4 +1,4 @@
-package com.boggle
+package com.boggle.data
 
 import android.content.Context
 import androidx.room.Database

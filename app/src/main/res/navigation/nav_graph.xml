@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.boggle.MenuFragment"
+        android:name="com.boggle.ui.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.boggle.SettingsFragment"
+        android:name="com.boggle.ui.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/allWordsFragment"
-        android:name="com.boggle.AllWordsFragment"
+        android:name="com.boggle.ui.AllWordsFragment"
         android:label="fragment_all_words"
         tools:layout="@layout/fragment_all_words" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.boggle.GameFragment"
+        android:name="com.boggle.ui.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/lobbyFragment"
-        android:name="com.boggle.LobbyFragment"
+        android:name="com.boggle.ui.LobbyFragment"
         android:label="fragment_lobby"
         tools:layout="@layout/fragment_lobby" >
         <action
@@ -70,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/rankingFragment"
-        android:name="com.boggle.RankingFragment"
+        android:name="com.boggle.ui.RankingFragment"
         android:label="fragment_ranking"
         tools:layout="@layout/fragment_ranking" >
         <action
@@ -79,7 +79,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultsFragment"
-        android:name="com.boggle.ResultsFragment"
+        android:name="com.boggle.ui.ResultsFragment"
         android:label="fragment_results"
         tools:layout="@layout/fragment_results" >
         <action

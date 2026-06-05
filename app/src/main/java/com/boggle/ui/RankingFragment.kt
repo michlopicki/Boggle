@@ -1,4 +1,4 @@
-package com.boggle
+package com.boggle.ui
 
 import android.os.Bundle
 import android.view.View
@@ -9,6 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.boggle.R
+import com.boggle.viewmodel.GameViewModel
 import kotlinx.coroutines.launch
 
 class RankingFragment : Fragment(R.layout.fragment_ranking) {

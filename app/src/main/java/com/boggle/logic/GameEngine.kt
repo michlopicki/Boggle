@@ -1,6 +1,6 @@
-package com.boggle
+package com.boggle.logic
 
-import android.graphics.RenderNode
+import kotlin.collections.iterator
 import kotlin.random.Random
 
 class GameEngine {

@@ -1,18 +1,24 @@
-package com.boggle
+package com.boggle.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.boggle.data.AppDatabase
+import com.boggle.logic.BoggleSolver
+import com.boggle.logic.GameEngine
+import com.boggle.data.GameResult
+import com.boggle.logic.Trie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.text.iterator
 
 class GameViewModel(application: Application) : AndroidViewModel(application) {
     // wspólny game engine dla wszystkich fragmentów
     val gameEngine = GameEngine()
     // dostęp do bazy danych
-    private val gameDAO = AppDatabase.getDatabase(application).gameDAO()
+    private val gameDAO = AppDatabase.Companion.getDatabase(application).gameDAO()
     val allGamesHistory: Flow<List<GameResult>> = gameDAO.getAllGames()
 
     // funkcja ładująca słownik po wylosowaniu planszy (w osobnym wątku)

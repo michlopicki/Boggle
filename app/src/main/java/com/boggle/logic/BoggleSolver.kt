@@ -1,4 +1,6 @@
-package com.boggle
+package com.boggle.logic
+
+import kotlin.text.iterator
 
 class TrieNode {
     val children = mutableMapOf<Char, TrieNode>()

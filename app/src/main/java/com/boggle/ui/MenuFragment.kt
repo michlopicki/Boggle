@@ -1,15 +1,11 @@
-package com.boggle
+package com.boggle.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import kotlinx.coroutines.launch
+import com.boggle.R
 
 class MenuFragment : Fragment(R.layout.fragment_menu) {
 

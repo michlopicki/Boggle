@@ -1,4 +1,4 @@
-package com.boggle
+package com.boggle.ui
 
 //TODO: rotate board button (potrzasanie?)
 //TODO: obrot ekranu (na razie w manifest)
@@ -22,6 +22,8 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import com.boggle.R
+import com.boggle.viewmodel.GameViewModel
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 
