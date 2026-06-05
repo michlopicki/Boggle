@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tv_settings_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USTAWIENIA"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 1. Sekcja Czasu Gry -->
+    <TextView
+        android:id="@+id/tv_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Czas rundy: 2:00"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_settings_title"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:valueFrom="15.0"
+        android:valueTo="300.0"
+        android:stepSize="15.0"
+        android:value="120.0"
+        app:tickVisible="false"
+        app:layout_constraintTop_toBottomOf="@id/tv_time_label" />
+
+    <!-- 2. Sekcja Dźwięków -->
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switch_sound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Efekty dźwiękowe"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/slider_time" />
+
+    <!-- 3. Sekcja Wibracji -->
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switch_vibration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Wibracje"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/switch_sound" />
+
+    <!-- 4. Reset Historii -->
+    <Button
+        android:id="@+id/btn_reset_history"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Zresetuj historię gier"
+        android:textColor="#D32F2F"
+        app:strokeColor="#D32F2F"
+        app:layout_constraintTop_toBottomOf="@id/switch_vibration" />
+
+    <!-- Powrót do menu -->
+    <Button
+        android:id="@+id/btn_settings_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Zapisz i wróć do Menu"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

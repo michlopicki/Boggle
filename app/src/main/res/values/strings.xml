@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Boggle</string>
+    <string name="menu_title">BOGGLE</string>
+    <string name="menu_singleplayer">Singleplayer</string>
+    <string name="menu_multiplayer">Multiplayer</string>
+    <string name="menu_ranking">Ranking</string>
+    <string name="menu_settings">Ustawienia</string>
+    <string name="hello_blank_fragment">TODO\nTODO\nTODO</string>
+    <string name="game_exit">←</string>
+    <string name="game_score">Pkt: %1$d</string>
+    <string name="game_timer_default">02:00</string>
+    <string name="game_guessed_words_label">Zgadnięte słowa:</string>
+</resources>
