@@ -12,5 +12,8 @@ data class GameResult(
     val wordCount: Int,
     val board: String,
     val durationSeconds: Int,
+    val isMultiplayer: Boolean,
+    val opponentScore: Int,
+    val opponentWordCount: Int,
     val dateMillis: Long = System.currentTimeMillis()
 )

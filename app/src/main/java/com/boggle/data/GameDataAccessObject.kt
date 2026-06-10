@@ -3,15 +3,17 @@ package com.boggle.data
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GameDataAccessObject {
-    // Zapisuje nowy wynik do bazy (działa w tle)
     @Insert
-    suspend fun insertGame(gameResult: GameResult)
+    suspend fun insertGame(gameResult: GameResult): Long
 
-    // Pobiera całą historię
+    @Update
+    suspend fun updateGame(gameResult: GameResult)
+
     @Query("SELECT * FROM game_history ORDER BY dateMillis DESC")
     fun getAllGames(): Flow<List<GameResult>>
 

@@ -23,8 +23,8 @@ class RankingAdapter : ListAdapter<GameResult, RankingAdapter.RankingViewHolder>
         val wordsText: TextView = view.findViewById(R.id.tv_ranking_words)
         val dateText: TextView = view.findViewById(R.id.tv_ranking_date)
         val miniBoard: GridLayout = view.findViewById(R.id.grid_mini_board)
-
-        // Formater daty (np. "24 Paź 2023, 14:30")
+        val opponentScoreText: TextView = view.findViewById(R.id.tv_ranking_opponent_score)
+        val opponentWordsText: TextView = view.findViewById(R.id.tv_ranking_opponent_words)
         private val dateFormat = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
 
         val durationText: TextView = view.findViewById(R.id.tv_ranking_duration)
@@ -37,6 +37,17 @@ class RankingAdapter : ListAdapter<GameResult, RankingAdapter.RankingViewHolder>
             val minutes = game.durationSeconds / 60
             val seconds = game.durationSeconds % 60
             durationText.text = String.format("Czas: %d:%02d", minutes, seconds)
+            
+            if (game.isMultiplayer) {
+                opponentScoreText.visibility = View.VISIBLE
+                opponentWordsText.visibility = View.VISIBLE
+                opponentScoreText.text = "Przeciwnik: ${game.opponentScore} pkt"
+                opponentWordsText.text = "${game.opponentWordCount} słów"
+            } else {
+                opponentScoreText.visibility = View.GONE
+                opponentWordsText.visibility = View.GONE
+            }
+            
             setupMiniBoard(game.board)
         }
 

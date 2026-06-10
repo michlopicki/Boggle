@@ -1,6 +1,5 @@
 package com.boggle.logic
 
-import kotlin.collections.iterator
 import kotlin.random.Random
 
 class GameEngine {
@@ -8,7 +7,7 @@ class GameEngine {
     val foundWords = mutableSetOf<String>()
     val opponentWords = mutableSetOf<String>()
     var roundTimeSecond = 30
-    val opponentScore = opponentWords.sumOf { calculateScore(it) }
+    var opponentScore = opponentWords.sumOf { calculateScore(it) }
     var board = String()
 
     var currentScore: Int = 0
@@ -21,9 +20,9 @@ class GameEngine {
         allPossibleWords = words
     }
 
-    fun setNewGame(){
+    fun setNewGame(seed : Long? = null){
         resetGame()
-        board = makeBoard()
+        board = makeBoard(seed)
     }
 
     fun checkWord(word: String) : Boolean {
@@ -43,7 +42,9 @@ class GameEngine {
 
     fun resetGame(){
         foundWords.clear()
+        opponentWords.clear()
         currentScore = 0
+        opponentScore = 0
     }
 
     // funkcje i zmienne do generowania planszy
@@ -69,66 +70,32 @@ class GameEngine {
         return 'X' // ERROR
     }
 
-    fun makeBoard() : String{
-        val randomGen = Random.Default
-//        val randomGen = Random(1000000007)
+    fun makeBoard(seed : Long? = null) : String{
+        var randomGen : Random
+        if (seed == null) randomGen = Random.Default
+        else randomGen = Random(seed)
         val board = mutableListOf<Char>()
 
         val vowelCount = randomGen.nextInt(5, 8)
         val consonantCount = 16 - vowelCount
 
+        val currentVowels = vowels.toMutableMap()
         repeat(vowelCount) {
-            board.add(getRandomLetter(vowels, randomGen))
+            val letter = getRandomLetter(currentVowels, randomGen)
+            board.add(letter)
+            currentVowels[letter] = currentVowels[letter]!! / 2
         }
 
+        val currentConsonants = consonants.toMutableMap()
         repeat(consonantCount) {
-            board.add(getRandomLetter(consonants, randomGen))
+            val letter = getRandomLetter(currentConsonants, randomGen)
+            board.add(letter)
+            currentConsonants[letter] = currentConsonants[letter]!! / 2
         }
 
         board.shuffle(randomGen)
 
         return board.toCharArray().concatToString()
-
-//        return  "EFOĆ" +
-//                "APIG" +
-//                "DAWO" +
-//                "INTB"
     }
-//
-//    private val dices = listOf(
-//        "AEINRT",
-//        "AEINST",
-//        "AEIORW",
-//        "AEOPSZ",
-//        "ACDKLM",
-//        "BCGHNP",
-//        "DGHMOU",
-//        "IŁPRSY",
-//        "EĘKNRW",
-//        "CĆLŚTZ",
-//        "AIOWYZ",
-//        "NÓPRTY",
-//        "AEJŁRW",
-//        "IUMPZB",
-//        "FHJŻŹA",
-//        "ABCDEŚ",
-//    )
-//
-//    fun makeBoard() : String{
-//        val randomGen = Random.Default
-////        val randomGen = Random(1000000007)
-//        val board = mutableListOf<Char>()
-//
-//        // 1. Mieszamy kostki
-//        val shuffledDice = dices.shuffled(randomGen)
-//
-//        // 2. Rzucamy każdą z 16 kostek
-//        for (die in shuffledDice) {
-//            val faceIndex = randomGen.nextInt(6)
-//            board.add(die[faceIndex])
-//        }
-//
-//        return board.toCharArray().concatToString()
-//    }
-
+    // można zrobić też losowanie planszy z 16 'kostek' tak jak w prawdziwej grze
 }

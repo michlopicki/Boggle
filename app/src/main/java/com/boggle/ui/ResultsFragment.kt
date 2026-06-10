@@ -14,6 +14,8 @@ import androidx.fragment.app.activityViewModels
 import com.boggle.R
 import com.boggle.viewmodel.GameViewModel
 import com.google.android.material.button.MaterialButtonToggleGroup
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 class ResultsFragment : Fragment(R.layout.fragment_results) {
 
@@ -25,9 +27,33 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
         val container = view.findViewById<LinearLayout>(R.id.container_words)
         val toggleGroup = view.findViewById<MaterialButtonToggleGroup>(R.id.toggle_group)
 
-        // TODO: Hide opponent in singleplayer
+        // Hide opponent in singleplayer
+        if (gameViewModel.currentInGameSeed == null) {
+            toggleGroup.visibility = View.GONE
+        }
 
+        // Blokowanie przycisku wstecz
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : androidx.activity.OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // NIC
+            }
+        })
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            gameViewModel.opponentFinalScore.collect {
+                if (toggleGroup.checkedButtonId == R.id.btn_opponent_results) {
+                    displayWords(container, isOpponent = true, view)
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            gameViewModel.gameStartEvent.collect {
+                findNavController().navigate(R.id.action_resultsFragment_to_gameFragment)
+            }
+        }
         displayWords(container, isOpponent = false, view)
+
         toggleGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 when (checkedId) {
@@ -41,8 +67,15 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
         view.findViewById<Button>(R.id.btn_main_menu).setOnClickListener {
             findNavController().navigate(R.id.action_resultsFragment_to_menuFragment)
         }
-        view.findViewById<Button>(R.id.btn_replay).setOnClickListener {
-            findNavController().navigate(R.id.action_resultsFragment_to_gameFragment)
+        val btnReplay = view.findViewById<Button>(R.id.btn_replay)
+        btnReplay.setOnClickListener {
+            if (gameViewModel.currentInGameSeed != null) {
+                btnReplay.isEnabled = false
+                btnReplay.text = "Czekam na przeciwnika..."
+                gameViewModel.requestRematch()
+            } else {
+                findNavController().navigate(R.id.action_resultsFragment_to_gameFragment)
+            }
         }
         view.findViewById<Button>(R.id.btn_all_words).setOnClickListener {
             findNavController().navigate(R.id.action_resultsFragment_to_allWordsFragment)
@@ -50,16 +83,14 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
 
     }
 
-    private fun findViewById(containerWords: Int) {}
-
     private fun displayWords(container: LinearLayout, isOpponent: Boolean, view: View) {
         val tvFinalScore = view.findViewById<TextView>(R.id.tv_final_score)
-        val finalScore = if (isOpponent) gameViewModel.gameEngine.opponentScore else gameViewModel.gameEngine.currentScore
-        tvFinalScore.text = "Suma: ${finalScore} pkt"
+        val finalScore = if (isOpponent) gameViewModel.opponentFinalScore.value else gameViewModel.gameEngine.currentScore
+        tvFinalScore.text = getString(R.string.results_total_score, finalScore)
 
         val tvWordCount = view.findViewById<TextView>(R.id.tv_word_count)
-        val wordsMap = if (isOpponent) gameViewModel.gameEngine.opponentWords else gameViewModel.gameEngine.foundWords
-        tvWordCount.text = "Znaleziono: ${wordsMap.size} słów"
+        val wordsMap = if (isOpponent) gameViewModel.opponentWords.value.toSet() else gameViewModel.gameEngine.foundWords
+        tvWordCount.text = getString(R.string.results_found_words, wordsMap.size)
 
         container.removeAllViews()
 

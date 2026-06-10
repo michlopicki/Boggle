@@ -11,7 +11,7 @@ class Trie {
     val root = TrieNode()
 
     fun insert(word: String) {
-        var current = root;
+        var current = root
         for (char in word) {
             current = current.children.getOrPut(char) { TrieNode() }
         }

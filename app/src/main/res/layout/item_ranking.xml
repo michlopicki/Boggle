@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
     app:cardCornerRadius="12dp"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="125 pkt"
+            tools:text="125 pkt"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/grid_mini_board"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="14 słów"
+            tools:text="14 słów"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/grid_mini_board"
             app:layout_constraintTop_toBottomOf="@id/tv_ranking_score" />
@@ -54,18 +54,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Czas: 3:00"
+            tools:text="Czas: 3:00"
             android:textSize="14sp"
             android:textStyle="italic"
             app:layout_constraintStart_toEndOf="@id/grid_mini_board"
             app:layout_constraintTop_toBottomOf="@id/tv_ranking_words" />
+
+        <!-- Wynik przeciwnika -->
+        <TextView
+            android:id="@+id/tv_ranking_opponent_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="Przeciwnik: 125 pkt"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#D32F2F"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/tv_ranking_score"
+            app:layout_constraintTop_toBottomOf="@id/tv_ranking_duration" />
+
+        <!-- Ilość słów przeciwnika -->
+        <TextView
+            android:id="@+id/tv_ranking_opponent_words"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="14 słów"
+            android:textSize="12sp"
+            android:textColor="#D32F2F"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/tv_ranking_words"
+            app:layout_constraintTop_toBottomOf="@id/tv_ranking_opponent_score" />
 
         <!-- Data gry -->
         <TextView
             android:id="@+id/tv_ranking_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12 Paź 2023, 15:30"
+            tools:text="12 Paź 2023, 15:30"
             android:textSize="12sp"
             android:textColor="#888888"
             app:layout_constraintEnd_toEndOf="parent"

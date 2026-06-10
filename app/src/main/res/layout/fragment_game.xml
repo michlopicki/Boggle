@@ -58,8 +58,9 @@
         android:id="@+id/tv_rival_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text=""
+        android:layout_marginTop="16sp"
+        android:text="@string/game_opponent_score_simple"
+        android:textColor="#2196F3"
         app:layout_constraintBottom_toTopOf="@id/grid_board"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_score" />

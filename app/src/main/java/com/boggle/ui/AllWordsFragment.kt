@@ -10,10 +10,11 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.boggle.R
 import com.boggle.viewmodel.GameViewModel
-import kotlin.getValue
+import kotlinx.coroutines.launch
 
 class AllWordsFragment : Fragment(R.layout.fragment_all_words) {
     private val gameViewModel: GameViewModel by activityViewModels()
@@ -22,17 +23,30 @@ class AllWordsFragment : Fragment(R.layout.fragment_all_words) {
         super.onViewCreated(view, savedInstanceState)
 
         val tvWordCount = view.findViewById<TextView>(R.id.tv_total_possible_words)
-        tvWordCount.text = "Możliwych słów na planszy: ${gameViewModel.gameEngine.getAllWords().size}"
+        tvWordCount.text = getString(R.string.all_words_possible_count, gameViewModel.gameEngine.getAllWords().size)
 
         val container = view.findViewById<LinearLayout>(R.id.container_all_words)
         displayWords(container)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            gameViewModel.gameStartEvent.collect {
+                findNavController().navigate(R.id.action_allWordsFragment_to_gameFragment)
+            }
+        }
 
         // Obsługa przycisków dolnych
         view.findViewById<Button>(R.id.btn_main_menu_all).setOnClickListener {
             findNavController().navigate(R.id.action_allWordsFragment_to_menuFragment)
         }
-        view.findViewById<Button>(R.id.btn_replay_all).setOnClickListener {
-            findNavController().navigate(R.id.action_allWordsFragment_to_gameFragment)
+        val btnReplayAll = view.findViewById<Button>(R.id.btn_replay_all)
+        btnReplayAll.setOnClickListener {
+            if (gameViewModel.currentInGameSeed != null) {
+                btnReplayAll.isEnabled = false
+                btnReplayAll.text = getString(R.string.status_waiting_for_opponent)
+                gameViewModel.requestRematch()
+            } else {
+                findNavController().navigate(R.id.action_allWordsFragment_to_gameFragment)
+            }
         }
         view.findViewById<Button>(R.id.btn_back_to_results).setOnClickListener {
             findNavController().popBackStack()
@@ -43,9 +57,10 @@ class AllWordsFragment : Fragment(R.layout.fragment_all_words) {
     private fun displayWords(container: LinearLayout) {
         container.removeAllViews()
 
-        val wordsMap = gameViewModel.gameEngine.getAllWords()
+        val wordsList = gameViewModel.gameEngine.getAllWords()
+            .sortedWith(compareByDescending<String> { it.length }.thenBy { it })
 
-        wordsMap.forEach { word ->
+        wordsList.forEach { word ->
             val row = LinearLayout(context).apply {
                 orientation = LinearLayout.HORIZONTAL
                 layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)

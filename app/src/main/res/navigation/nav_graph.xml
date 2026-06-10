@@ -51,7 +51,9 @@
         tools:layout="@layout/fragment_game" >
         <action
             android:id="@+id/action_gameFragment_to_resultsFragment"
-            app:destination="@id/resultsFragment" />
+            app:destination="@id/resultsFragment"
+            app:popUpTo="@id/gameFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_gameFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
@@ -90,6 +92,8 @@
             app:destination="@id/menuFragment" />
         <action
             android:id="@+id/action_resultsFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment"
+            app:popUpTo="@id/resultsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

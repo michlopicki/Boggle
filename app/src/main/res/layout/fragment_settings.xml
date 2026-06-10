@@ -10,20 +10,20 @@
         android:id="@+id/tv_settings_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="USTAWIENIA"
+        android:text="@string/settings_title"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 1. Sekcja Czasu Gry -->
+    <!-- Sekcja Czasu Gry -->
     <TextView
         android:id="@+id/tv_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Czas rundy: 2:00"
+        android:text="@string/settings_round_time"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/tv_settings_title"
         app:layout_constraintStart_toStartOf="parent" />
@@ -40,34 +40,34 @@
         app:tickVisible="false"
         app:layout_constraintTop_toBottomOf="@id/tv_time_label" />
 
-    <!-- 2. Sekcja Dźwięków -->
+    <!-- Sekcja Dźwięków -->
     <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/switch_sound"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Efekty dźwiękowe"
+        android:text="@string/settings_sound_effects"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/slider_time" />
 
-    <!-- 3. Sekcja Wibracji -->
+    <!-- Sekcja Wibracji -->
     <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/switch_vibration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Wibracje"
+        android:text="@string/settings_vibration"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/switch_sound" />
 
-    <!-- 4. Reset Historii -->
+    <!-- Reset Historii -->
     <Button
         android:id="@+id/btn_reset_history"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Zresetuj historię gier"
+        android:text="@string/settings_reset_history"
         android:textColor="#D32F2F"
         app:strokeColor="#D32F2F"
         app:layout_constraintTop_toBottomOf="@id/switch_vibration" />
@@ -78,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Zapisz i wróć do Menu"
+        android:text="@string/settings_save_and_back"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

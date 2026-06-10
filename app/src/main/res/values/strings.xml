@@ -5,9 +5,56 @@
     <string name="menu_multiplayer">Multiplayer</string>
     <string name="menu_ranking">Ranking</string>
     <string name="menu_settings">Ustawienia</string>
-    <string name="hello_blank_fragment">TODO\nTODO\nTODO</string>
     <string name="game_exit">←</string>
     <string name="game_score">Pkt: %1$d</string>
     <string name="game_timer_default">02:00</string>
     <string name="game_guessed_words_label">Zgadnięte słowa:</string>
+
+    <!-- Bluetooth & Multiplayer Statuses -->
+    <string name="status_waiting">Oczekiwanie...</string>
+    <string name="status_connected">Połączono!</string>
+    <string name="status_error">Błąd: %1$s</string>
+    <string name="status_disconnected">Rozłączono z przeciwnikiem.</string>
+    <string name="status_connecting">Łączenie z %1$s...</string>
+    <string name="status_waiting_for_opponent">Czekam na przeciwnika...</string>
+    <string name="status_searching_host">Szukam Hosta...</string>
+
+    <!-- Results & Stats -->
+    <string name="results_total_score">Suma: %1$d pkt</string>
+    <string name="results_found_words">Znaleziono: %1$d słów</string>
+    <string name="all_words_possible_count">Możliwych słów na planszy: %1$d</string>
+    <string name="game_opponent_score">Przeciwnik: %1$d pkt</string>
+    <string name="game_opponent_score_simple">Przeciwnik: %1$d pkt</string>
+    <string name="results_my_results">Moje wyniki</string>
+    <string name="results_opponent">Przeciwnik</string>
+    <string name="results_all_words">Wszystkie</string>
+
+    <!-- Buttons -->
+    <string name="btn_rematch">Dogrywka</string>
+    <string name="btn_results">Wyniki</string>
+    <string name="btn_menu">Menu</string>
+    <string name="btn_cancel_back">Anuluj i wróć</string>
+    <string name="btn_back_to_menu">Wróć do Menu</string>
+    <string name="settings_save_and_back">Zapisz i wróć do Menu</string>
+
+    <!-- Headers & Labels -->
+    <string name="all_words_title">WSZYSTKIE SŁOWA</string>
+    <string name="lobby_title">MULTIPLAYER</string>
+    <string name="lobby_btn_host">Stwórz grę</string>
+    <string name="lobby_btn_join">Dołącz do gry</string>
+    <string name="lobby_devices_label">Dostępne urządzenia:</string>
+    
+    <string name="ranking_title">HISTORIA GIER</string>
+    <string name="ranking_singleplayer">Singleplayer</string>
+    <string name="ranking_multiplayer">Multiplayer</string>
+
+    <string name="settings_title">USTAWIENIA</string>
+    <string name="settings_round_time">Czas rundy: %1$d:%2$02d</string>
+    <string name="settings_sound_effects">Efekty dźwiękowe</string>
+    <string name="settings_vibration">Wibracje</string>
+    <string name="settings_reset_history">Zresetuj historię gier</string>
+    
+    <string name="ranking_item_score">%1$d pkt</string>
+    <string name="ranking_item_words">%1$d słów</string>
+    <string name="ranking_item_duration">Czas: %1$d:%2$02d</string>
 </resources>
